@@ -1,3 +1,5 @@
+Test test
+
 # Recursion
 
 Recursion crops up repeatedly both in web development and in computer science in general. It's used to traverse more complex data structures such as trees. The DOM, for example, is a classic tree structure.
@@ -16,11 +18,12 @@ Often times, a recursive solution to a problem is more elegant than an iterative
 **Please use recursion for the following problems**
 
 1. Implement the factorial function.
+
 ```javascript
-factorial(0) // 1
-factorial(1) // 1
-factorial(2) // 2 * 1 = 2
-factorial(4) // 4 * 3 * 2 * 1 = 24
+factorial(0); // 1
+factorial(1); // 1
+factorial(2); // 2 * 1 = 2
+factorial(4); // 4 * 3 * 2 * 1 = 24
 ```
 
 2. Implement a function that sums the integers 1 through n.
@@ -56,9 +59,9 @@ Note: fib(1) is the first number in the sequence, fib(2) the second, etc...
 E.g
 
 ```js
-deepTotal([1, 2, 3]) // ---> 6
-deepTotal([1, [5, 10]]) // ---> 16
-deepTotal([3, [[6]], 9]) // ---> 18
+deepTotal([1, 2, 3]); // ---> 6
+deepTotal([1, [5, 10]]); // ---> 16
+deepTotal([3, [[6]], 9]); // ---> 18
 ```
 
 8. Implement a function that determines if an array includes a particular value at any level of nesting.
