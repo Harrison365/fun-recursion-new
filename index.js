@@ -1,22 +1,25 @@
 const factorial = (num) => {
   if (num < 2) {
     return 1;
-  }
-  return num * factorial(num - 1);
+  } //BASE CASE
+  next = num - 1; //RECURSIVE STEP
+  return num * factorial(num - 1); //RECURSIVE CALL
 };
 
 const sumOneThrough = (n) => {
   if (n < 2) {
     return 1;
-  }
-  return n + sumOneThrough(n - 1);
+  } //BASE CASE
+  next = n - 1; //RECURSIVE STEP
+  return n + sumOneThrough(next); //RECURSIVE CALL
 };
 
 const reverseString = (str) => {
   if (str.length <= 1) {
     return str;
-  }
-  return str[str.length - 1] + reverseString(str.slice(0, -1));
+  } //BASE CASE
+  const nextStr = str.slice(0, -1);
+  return str[str.length - 1] + reverseString(nextStr);
 };
 
 const countWhitespace = (str) => {
@@ -54,6 +57,7 @@ const fib = (n) => {
   return fib(n - 1) + fib(n - 2);
 };
 
+//NON-RECURSIVE WAY vvv
 // const fibonacci = (n) => {
 //   let arr = [0, 1];
 //   if (n === 1 || n === 2) {
@@ -113,6 +117,52 @@ const countObjects = (obj) => {
   return objCount;
 };
 
+function deepFreeze(objOrArr) {
+  Object.freeze(objOrArr);
+  for (const keyOrInd in objOrArr) {
+    if (typeof objOrArr[keyOrInd] === "object") {
+      deepFreeze(objOrArr[keyOrInd]);
+    }
+  }
+}
+
+function analyzeArray(str, array) {
+  array.forEach((element, index) => {
+    if (Array.isArray(element)) analyzeArray(`${str}.${index}`, element);
+    else console.log(`${str}.${index}: ${element}`);
+  });
+}
+
+function stringify(item) {
+  // item is a number (avoiding NaN and Infinity) or boolean
+  if (typeof item === "number" || typeof item === "boolean") return `${item}`;
+  // item is a string
+  if (typeof item === "string") return `"${item}"`;
+  // item is null or undefined
+  if (!item) return "null";
+
+  let stringifiedItem = "";
+  // item is an array
+  if (Array.isArray(item)) {
+    stringifiedItem += "[";
+    item.forEach((element, index) => {
+      stringifiedItem += stringify(element);
+      if (index < item.length - 1) stringifiedItem += ",";
+    });
+    stringifiedItem += "]";
+    // item is an object
+  } else if (typeof item === "object") {
+    stringifiedItem += "{";
+    const entries = Object.entries(item);
+    entries.forEach(([key, value], index) => {
+      stringifiedItem += `"${key}":${stringify(value)}`;
+      if (index < entries.length - 1) stringifiedItem += ",";
+    });
+    stringifiedItem += "}";
+  }
+  return stringifiedItem;
+}
+
 module.exports = {
   factorial,
   sumOneThrough,
@@ -123,7 +173,7 @@ module.exports = {
   deepTotal,
   deepIncludes,
   countObjects,
-  //   deepFreeze,
-  //   analyzeArray,
-  //   stringify,
+  deepFreeze,
+  analyzeArray,
+  stringify,
 };

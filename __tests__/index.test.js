@@ -183,7 +183,7 @@ describe("countObjects(obj)", () => {
   });
 });
 
-describe.skip("deepFreeze(objOrArr)", () => {
+describe("deepFreeze(objOrArr)", () => {
   test("freezes a flat object", () => {
     let input = {};
     deepFreeze(input);
@@ -265,7 +265,7 @@ describe.skip("deepFreeze(objOrArr)", () => {
   });
 });
 
-describe.skip("analyzeArray(str, array)", () => {
+describe("analyzeArray(str, array)", () => {
   let consoleLogSpy;
   beforeEach(() => {
     consoleLogSpy = jest.spyOn(console, "log");
@@ -315,7 +315,7 @@ describe.skip("analyzeArray(str, array)", () => {
   });
 });
 
-describe.skip("stringify(item)", () => {
+describe("stringify(item)", () => {
   test("returns a string", () => {
     expect(stringify("")).toBe('""');
     expect(stringify(12)).toBe("12");
