@@ -265,7 +265,7 @@ describe("deepFreeze(objOrArr)", () => {
   });
 });
 
-describe("analyzeArray(str, array)", () => {
+describe.only("analyzeArray(str, array)", () => {
   let consoleLogSpy;
   beforeEach(() => {
     consoleLogSpy = jest.spyOn(console, "log");
