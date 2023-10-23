@@ -12,9 +12,27 @@ function deepTotal(arr) {
 }
 
 //2
+// const deepIncludes = (arr, thing) => {
+//   let bool = false;
+//   arr.forEach((ele) => {
+//     if (Array.isArray(ele)) {
+//       if (deepIncludes(ele, thing)) {
+//         bool = true;
+//       }
+//     }
+//     if (ele === thing) {
+//       bool = true;
+//     }
+//   });
+//   return bool;
+// };
+
+//2 with for loop
+
 const deepIncludes = (arr, thing) => {
   let bool = false;
-  arr.forEach((ele) => {
+  for (let i = 0; i < arr.length; i++) {
+    const ele = arr[i];
     if (Array.isArray(ele)) {
       if (deepIncludes(ele, thing)) {
         bool = true;
@@ -23,9 +41,8 @@ const deepIncludes = (arr, thing) => {
     if (ele === thing) {
       bool = true;
     }
-  });
-  return bool;
-};
+  }
+
 
 //3
 const countObjects = (obj) => {
